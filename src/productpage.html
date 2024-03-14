@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="output.css" rel="stylesheet" />
+		<link href="input.css" rel="stylesheet" />
+		<link href="scroll.css" rel="stylesheet" />
+	</head>
+
+	<header class="w-full items-center font-gt-america fixed top-0 z-50 bg-white">
+		<div id="hiddenElement"
+			class="bg-black text-white h-[20px] w-full flex-row justify-between items-center text-sm p-3 flex lg:hidden transition-all duration-500"
+		>
+			<button id="but1" onclick="changeText(-1)">&lt;</button>
+			<div class="flex-row flex gap-x-2 items-center">
+				<img id="logo" class="w-[15px] h-[15px] invert" />
+				<p class="text-[10px] font-bold" id="changableText"></p>
+			</div>
+			<button id="but2" onclick="changeText(1)">&gt;</button>
+		</div>
+
+		<div
+			class="bg-black text-white h-[20px] w-full flex-row justify-around items-center text-[11px] p-3 hidden lg:flex"
+		>
+			<div class="flex-row flex gap-x-2 items-center">
+				<img src="/img/clock.png" class="w-[15px] h-[15px] invert" />
+				<button>FREE DELIVERY STARTING FROM €100</button>
+			</div>
+			<div class="flex-row flex gap-x-2 items-center">
+				<img src="/img/calen.png" class="w-[15px] h-[15px] invert" />
+				<button class="text-orange-500">BOOK A VIDEO CHAT</button>
+			</div>
+			<div class="flex-row flex gap-x-2 items-center">
+				<img src="/img/padlock.png" class="w-[15px] h-[15px] invert" />
+				<button>SECURE PAYMENT</button>
+			</div>
+		</div>
+
+		<div class="mt-2">
+			<div class="border-b-[1px] border-neutral-300 transition-all duration-300">
+				<div class="flex justify-between p-2 mb-2 ml-5 mr-5 xl:ml-12 xl:mr-12 items-center">
+					<img
+						id="searc3"
+						onclick="searchItem()"
+						src="/img/search.png"
+						class="w-[20px] h-[20px] hidden xl:hidden opacity-80 cursor-pointer"
+					/>
+					<button id="searc4" onclick="searchItem()" class="font-semibold text-xl text-center xl:hidden flex">X</button>
+					<div class="flex-row items-center xl:flex hidden">
+						<img src="/img/english.png" class="w-[20px] h-[20px]" />
+						<select class="outline-none text-neutral-500">
+							<option>United Kingdom</option>
+						</select>
+					</div>
+					<img src="/img/samsonite-bw.png" class="w-[120px] h-[20px] xl:w-[180px] xl:h-[30px]" />
+					<div class="flex flex-row justify-between gap-x-4">
+						<img src="/img/location.png" class="w-[20px] h-[20px] hidden xl:flex cursor-pointer" />
+						<img src="/img/user.png" class="w-[20px] h-[20px] hidden xl:flex cursor-pointer" />
+						<img src="/img/suitcase.png" class="w-[20px] h-[20px] cursor-pointer" />
+						<img
+							src="/img/menuu.png"
+							class="w-[20px] h-[20px] xl:hidden cursor-pointer"
+							id="menu"
+							onclick="openMenu()"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<div id="searc" class="bg-black bg-opacity-70 absolute w-[100%] h-screen">
+				<div class="justify-between items-center flex bg-white h-[8rem] p-5 xl:p-12 transition-all duration-500">
+					<div
+						class="flex flex-row border-b-[1px] border-neutral-300 w-full xl:w-[500px] items-center justify-center ml-[14px] mr-[14px]"
+					>
+						<img
+							src="/img/search.png"
+							class="xl:w-[36px] xl:h-[36px] w-[20px] h-[20px] mr-3 opacity-50 cursor-pointer"
+						/>
+						<input type="text" placeholder="Search" class="w-[100%] text-2xl xl:text-4xl outline-none" />
+					</div>
+					<button
+						onclick="searchItem()"
+						class="font-bold font-gt-america text-4xl p-2 text-center border-[1px] rounded-full border-neutral-500 hidden xl:flex"
+					>
+						x
+					</button>
+				</div>
+			</div>
+
+			<div id="searc2" class="border-b-[1px] border-neutral-300 hidden">
+				<div class="hidden xl:flex justify-between items-center">
+					<div class="flex flex-row items-center gap-x-4 mx-12 border-b-[1px] border-neutral-300" onclick="searchItem()">
+						<img src="/img/search.png" class="w-[17px] h-[17px] opacity-50 cursor-pointer" />
+						<input type="text" placeholder="Search" class="w-[170px] outline-none" />
+					</div>
+					<div class="font-bold text-xs flex flex-row justify-between w-[27rem] h-12 ">
+						<button id="luggage" class="hover:border-b-4 border-black">LUGGAGE</button>
+						<button id="backpacks" class="hover:border-b-4 border-black">BACKPACKS</button>
+						<button id="bags" class="hover:border-b-4 border-black">BAGS</button>
+						<button id="disney" class="hover:border-b-4 border-black">DISNEY & KIDS</button>
+						<button id="personalization" class="hover:border-b-4 border-black">PERSONALIZATION</button>
+					</div>
+					<div class="font-bold flex flex-row justify-between w-[9rem] h-12 text-xs mx-12">
+						<button id="services">SERVICES</button>
+						<button id="brand">THE BRAND</button>
+					</div>
+					<div id="lugHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+            <div class="bg-white w-full h-[580px] transition-all duration-500 px-12 py-9 justify-center text-xs">
+                  <div class="grid grid-cols-6 grid-rows-1 w-full h-fit gap-x-4">
+                   <div class="w-full h-[470px]">
+										<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+                      <p class="cursor-pointer hover:underline">PERSONALISE YOUR SUITCASE</p>
+											<p class="cursor-pointer hover:underline">NEW ARRIVALS</p>
+											<p class="cursor-pointer hover:underline">MADE IN EUROPE</p>
+											<p class="cursor-pointer hover:underline">LIGHTWEIGHT SUITCASES</p>
+											<p class="cursor-pointer hover:underline">PREMIUM-QUALITY ALUMINIUM SUITCASES</p>
+											<p class="cursor-pointer hover:underline">MORE SUSTAINABLE LUGGAGE</p>
+											<p class="cursor-pointer hover:underline">RECOMMENDED LUGGAGE</p>
+										</div>
+									 </div>
+									 <div class="w-full h-[470px]">
+										<div class="flex flex-col h-[300px] justify-start gap-y-4">
+                      <p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">CATEGORIES</p>
+											<p class="cursor-pointer hover:underline">Cabin Luggage</p>
+											<p class="cursor-pointer hover:underline">Suitcases</p>
+											<p class="cursor-pointer hover:underline">Duffle Bags</p>
+											<p class="cursor-pointer hover:underline">Garment Bags</p>
+											<p class="cursor-pointer hover:underline">Pilot Cases</p>
+											<p class="cursor-pointer hover:underline">Luggage Sets</p>
+											<p class="cursor-pointer hover:underline">All Luggage</p>
+											<div class="flex flex-col h-[300px] justify-start gap-y-4 mt-4">
+												<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">BY MATERIAL</p>
+												<p class="cursor-pointer hover:underline">Hardcase Luggage</p>
+												<p class="cursor-pointer hover:underline">Softside Luggage</p>
+											</div>
+										</div>
+									 </div>
+									 <div class="w-fullh-[470px]">
+										<div class="flex flex-col h-[300px] justify-start gap-y-4">
+                      <p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">ACCESSORIES</p>
+											<p class="cursor-pointer hover:underline">Travel Accessories</p>
+											<p class="cursor-pointer hover:underline">Luggage Straps</p>
+											<p class="cursor-pointer hover:underline">Luggage Covers</p>
+											<p class="cursor-pointer hover:underline">Beauty Case</p>
+											<p class="cursor-pointer hover:underline">Toiletry Bags</p>
+											<p class="cursor-pointer hover:underline">Umbrellas </p>
+											<p class="cursor-pointer hover:underline">All Travel Accessories</p>
+										</div>
+									 </div>
+									 <div class="w-full h-[470px] cursor-pointer">
+										<div class="flex flex-col h-[300px] justify-start gap-y-2">
+											<div class="flex justify-center items-center bg-slate-200">
+											<img src="/img/redluggage.jpg" class="w-full h-fit  items-center scale-90"/>
+										</div>
+                      <p class="font-bold text-base">NUON</p>
+											<p>Spinner Expandable (4 wheels) 55cm | 55/40 x 40 x 20/23 cm | 2.5 kg </p>
+											<p class="font-bold text-base">£245.00</p>
+										</div>
+									 </div>
+									  <div class="w-full h-[470px] cursor-pointer">
+											<div class="flex flex-col h-[300px] justify-start gap-y-2">
+												<div class="flex justify-center items-center bg-slate-200">
+												<img src="/img/blackluggage.jpg" class="w-full h-fit  items-center scale-90"/>
+											</div>
+												<p class="font-bold text-base">SPECTROLITE</p>
+												<p>Spinner 55cm + Backpack 15.6" </p>
+												<p class="font-bold text-base">£404.00</p>
+											</div>
+									 </div>
+									 <div class="w-full h-[470px] cursor-pointer">
+										<div class="flex flex-col h-[300px] justify-start gap-y-2">
+											<div class="flex justify-center items-center">
+											<img src="/img/blackluggage2.jpg" class="w-full h-[347px] object-cover  items-center"/>
+										</div>
+                      <p class="font-bold text-base">BOSS | SAMSONITE</p>
+										</div>
+									 </div>
+									</div>
+						</div>
+					</div>
+				</div>
+				<div id="backHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+					<div class="bg-white w-full h-[580px] transition-all duration-500 px-12 py-9 justify-center">
+						<div class="grid grid-cols-6 grid-rows-1 w-full h-fit gap-x-4">
+							<div class="w-full  h-[470px]">
+								<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+									<p class="cursor-pointer hover:underline">PERSONALISE YOUR BACKPACK</p>
+									<p class="cursor-pointer hover:underline">NEW ARRIVALS</p>
+									<p class="cursor-pointer hover:underline">ANTI-THEFT BACKPACKS</p>
+									<p class="cursor-pointer hover:underline">SMART BACKPACKS</p>
+									<p class="cursor-pointer hover:underline">RECYCLEX BACKPACKS</p>
+									<p class="cursor-pointer hover:underline">RECOMMENDED BACKPACKS BY OUR EXPERTS</p>
+								</div>
+							</div>
+							<div class="w-full h-[470px] text-xs">
+								<div class="flex flex-col h-[300px] justify-start gap-y-4">
+									<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">CATEGORIES</p>
+									<p class="cursor-pointer hover:underline">Laptop Backpacks</p>
+									<p class="cursor-pointer hover:underline">Day Backpacks</p>
+									<p class="cursor-pointer hover:underline">Travel Backpacks</p>
+									<p class="cursor-pointer hover:underline">Backpacks with Wheels</p>
+									<p class="cursor-pointer hover:underline">Business Sets</p>
+									<p class="cursor-pointer hover:underline">All Backpacks</p>
+									<div class="flex flex-col h-[300px] justify-start gap-y-4 mt-4">
+										<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">BY GENDER</p>
+										<p class="cursor-pointer hover:underline">Backpacks for Him</p>
+										<p class="cursor-pointer hover:underline">Backpacks for Her</p>
+										<p class="cursor-pointer hover:underline">Unisex Backpacks</p>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[470px]">
+								<div class="flex flex-col h-[300px] justify-start gap-y-4 text-xs">
+									<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">ACCESSORIES</p>
+									<p class="cursor-pointer hover:underline">Umbrellas </p>
+									<p class="cursor-pointer hover:underline">Wallets</p>
+									<p class="cursor-pointer hover:underline">Toiletry Bags</p>
+									<p class="cursor-pointer hover:underline">Personalise your Luggage Tag</p>
+									<p class="cursor-pointer hover:underline">All Accessories</p>
+								</div>
+							</div>
+							<div class="w-full h-[470px] cursor-pointer">
+								<div class="flex flex-col h-[300px] justify-start gap-y-2">
+									<div class="flex justify-center items-center bg-slate-200">
+									<img src="/img/blackback.jpg" class="w-full h-fit  items-center scale-90"/>
+								</div>
+									<p class="font-bold text-base">ZAILA 3.0</p>
+									<p class="text-xs">Backpack 14.1" | 38.5 x 28 x 11 cm | 1 kg</p>
+									<p class="font-bold text-base">£179.00</p>
+								</div>
+							</div>
+							 <div class="w-full  h-[470px] cursor-pointer">
+								<div class="flex flex-col h-[300px] justify-start gap-y-2">
+									<div class="flex justify-center items-center">
+									<img src="/img/yellowback.jpg" class="w-full h-[347px] object-cover  items-center"/>
+								</div>
+									<p class="font-bold text-base">BACKPACKS DURABLY DESIGNED</p>
+								</div>
+							</div>
+							<div class="w-full h-[470px] cursor-pointer">
+								<div class="flex flex-col h-[300px] justify-start gap-y-2">
+									<div class="flex justify-center items-center">
+									<img src="/img/blueback.jpg" class="w-full h-[347px] object-cover  items-center"/>
+								</div>
+									<p class="font-bold text-base">PERSONALISE YOUR LAPTOP BAG</p>
+								</div>
+							 </div>
+							</div>
+						 </div>
+					</div>
+				</div>
+			</div>
+			<div id="bagsHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+				<div class="bg-white w-full h-[580px] transition-all duration-500 px-12 py-9 justify-center">
+					<div class="grid grid-cols-6 grid-rows-1 w-full h-fit gap-x-4">
+						<div class="w-full  h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+								<p class="cursor-pointer hover:underline">PERSONALISE YOUR LAPTOP BAG</p>
+								<p class="cursor-pointer hover:underline">NEW ARRIVALS</p>
+								<p class="cursor-pointer hover:underline">RECYCLEX BAGS</p>
+								<p class="cursor-pointer hover:underline">RECOMMENDED BAGS BY OUR EXPERTS</p>
+							</div>
+						</div>
+						<div class="w-full h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 text-xs">
+								<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">CATEGORIES</p>
+								<p class="cursor-pointer hover:underline">Laptop Bags</p>
+								<p class="cursor-pointer hover:underline">Briefcases & Laptop Briefcases</p>
+								<p class="cursor-pointer hover:underline">Handbags</p>
+								<p class="cursor-pointer hover:underline">Cross Body Bags</p>
+								<p class="cursor-pointer hover:underline">Bum Bags</p>
+								<p class="cursor-pointer hover:underline">Shoulder Bags</p>
+								<p class="cursor-pointer hover:underline">Sports Bags</p>
+								<p class="cursor-pointer hover:underline">All Bags</p>
+								<div class="flex flex-col h-[300px] justify-start gap-y-4 mt-4">
+									<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">BY GENDER</p>
+									<p class="cursor-pointer hover:underline">Bags for Him</p>
+									<p class="cursor-pointer hover:underline">Bags for Her</p>
+									<p class="cursor-pointer hover:underline">Unisex Bags</p>
+								</div>
+							</div>
+						</div>
+						<div class="w-full h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 text-xs">
+								<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">ACCESSORIES</p>
+								<p class="cursor-pointer hover:underline">Umbrellas </p>
+								<p class="cursor-pointer hover:underline">Wallets & Purses</p>
+								<p class="cursor-pointer hover:underline">Toiletry Bags</p>
+								<p class="cursor-pointer hover:underline">All Accessories</p>
+							</div>
+						</div>
+						<div class="w-full h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center bg-slate-200">
+								<img src="/img/blackbag.jpg" class="w-full h-fit  items-center scale-90"/>
+							</div>
+								<p class="font-bold text-base">PRO-DLX 6</p>
+								<p class="text-xs">Briefcase 15.6" | 30.5/42 x 42 x 15/21 cm | 1.4 kg</p>
+								<p class="font-bold text-base">£269.00</p>
+							</div>
+						</div>
+						 <div class="w-full h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center bg-slate-200">
+								<img src="/img/pinkbag.jpg" class="w-full h-fit  items-center scale-90"/>
+							</div>
+								<p class="font-bold text-base">BE-HER</p>
+								<p class="text-xs">Shopping bag 15.6" | 29 x 39 x 14 cm | 0.9 kg</p>
+								<p class="font-bold text-base">£179.00</p>
+							</div>
+						</div>
+						<div class="w-full h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center">
+								<img src="/img/blackbag2.jpg" class="w-full h-[347px] object-cover  items-center"/>
+							</div>
+								<p class="font-bold text-base">PERSONALISE YOUR LAPTOP BAG</p>
+							</div>
+						</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+			<div id="disneyHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+				<div class="bg-white w-full h-[580px] transition-all duration-500 px-12 py-9 justify-center">
+					<div class="grid grid-cols-6 grid-rows-1 w-full h-fit gap-x-4">
+						<div class="w-full h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+								<p class="cursor-pointer hover:underline">BACK TO SCHOOL BAGS</p>
+								<p class="cursor-pointer hover:underline">NEW ARRIVALS</p>
+								<p class="cursor-pointer hover:underline">RECYCLEX KIDS' BAGS & SUITCASES</p>
+								<p class="cursor-pointer hover:underline">RECOMMENDED KIDS' ITEMS BY OUR EXPERTS</p>
+							</div>
+						</div>
+						<div class="w-full h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 text-xs">
+								<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">CATEGORIES</p>
+								<p class="cursor-pointer hover:underline">Disney & Kids' Suitcases</p>
+								<p class="cursor-pointer hover:underline">Kids' Ride On Suitcases
+								<p class="cursor-pointer hover:underline">Backpacks for Kids</p>
+								<p class="cursor-pointer hover:underline">School Bags</p>
+								<p class="cursor-pointer hover:underline">Kids' Pencil Cases</p>
+								<p class="cursor-pointer hover:underline">Kids' Luggage Sets</p>
+								<p class="cursor-pointer hover:underline">School Sets for Kids</p>
+								<p class="cursor-pointer hover:underline">All Kids' Items</p>
+								<div class="flex flex-col h-[300px] justify-start gap-y-4 mt-4">
+									<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">BY AGE</p>
+									<p class="cursor-pointer hover:underline">Kids' Bags & Suitcases for 3 to 6 years olds</p>
+									<p class="cursor-pointer hover:underline">Kids' Bags & Suitcases for 5 to 12 years olds</p>
+								</div>
+							</div>
+						</div>
+						<div class="w-full h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 text-xs">
+								<p class="font-bold text-xs pb-2 mb-2 border-b border-neutral-300 cursor-default">BY CHARACTER</p>
+								<p class="cursor-pointer hover:underline">Donald Duck </p>
+								<p class="cursor-pointer hover:underline">Frozen</p>
+								<p class="cursor-pointer hover:underline">Happy Sammies</p>
+								<p class="cursor-pointer hover:underline">Mickeyy Mouse</p>
+								<p class="cursor-pointer hover:underline">Minnie Mouse</p>
+								<p class="cursor-pointer hover:underline">Spider-Man</p>
+								<p class="cursor-pointer hover:underline">Cars</p>
+							</div>
+						</div>
+						<div class="w-full h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center bg-slate-200">
+								<img src="/img/disney.jpg" class="w-full h-fit  items-center scale-90"/>
+							</div>
+								<p class="font-bold text-base">DREAM2GO</p>
+								<p class="text-xs">Spinner (4 wheels)| 38 x 52 x 21 cm | 2.1 kg</p>
+								<p class="font-bold text-base">£95.00</p>
+							</div>
+						</div>
+						 <div class="w-full h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center bg-slate-200">
+								<img src="/img/disney2.jpg" class="w-full h-fit  items-center scale-90"/>
+							</div>
+								<p class="font-bold text-base">DISNEY ULTIMATE 2.0</p>
+								<p class="text-xs">Backpack S | 28.5 x 23.5 x 13.5 cm | 0.2 kg</p>
+								<p class="font-bold text-base">£49.00</p>
+							</div>
+						</div>
+						<div class="w-full h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center">
+								<img src="/img/disney3.jpg" class="w-full h-[347px] object-cover  items-center"/>
+							</div>
+								<p class="font-bold text-base">KIDS' BAGS & LUGGAGE</p>
+							</div>
+						</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+			<div id="persHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+				<div class="bg-white w-full h-[470px] transition-all duration-500 px-12 py-9 justify-center">
+					<div class="grid grid-cols-3 grid-rows-1 w-full h-fit gap-x-4">
+						<div class="w-full h-[470px]">
+							<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+								<p class="cursor-pointer hover:underline">PERSONALISE YOUR SUITCASE</p>
+								<p class="cursor-pointer hover:underline">PERSONALISE YOUR BACKPACK</p>
+								<p class="cursor-pointer hover:underline">PERSONALISE YOUR LAPTOP BAG</p>
+								<p class="cursor-pointer hover:underline">PERSONALISE YOUR WALLET</p>
+								<p class="cursor-pointer hover:underline">PERSONALISE YOUR LUGGAGE TAG</p>
+							</div>
+						</div>
+						<div class="w-full  h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center">
+								<img src="/img/pers.jpg" class="w-full h-[347px] object-cover  items-center"/>
+							</div>
+								<p class="font-bold text-base">PERSONALISE YOUR LAPTOP BAG</p>
+							</div>
+						</div>
+						<div class="w-full  h-[470px] cursor-pointer">
+							<div class="flex flex-col h-[300px] justify-start gap-y-2">
+								<div class="flex justify-center items-center">
+								<img src="/img/pers2.jpg" class="w-full h-[347px] object-cover  items-center"/>
+							</div>
+								<p class="font-bold text-base">PERSONALISE YOUR SUITCASE</p>
+							</div>
+						</div>
+					 </div>
+				</div>
+			</div>
+		</div>
+		<div id="servHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+			<div class="bg-white w-full h-[470px] transition-all duration-500 px-12 py-9 justify-center">
+				<div class="grid grid-cols-3 grid-rows-1 w-full h-fit gap-x-4">
+					<div class="w-full h-[470px]">
+						<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+							<p class="cursor-pointer hover:underline">FAQ</p>
+							<p class="cursor-pointer hover:underline">CONTACT US</p>
+							<p class="cursor-pointer hover:underline">WARRANTY</p>
+							<p class="cursor-pointer hover:underline">PRODUCT REGISTRATION</p>
+							<p class="cursor-pointer hover:underline">SERVICE PORTAL</p>
+							<p class="cursor-pointer hover:underline">WECARE</p>
+						</div>
+					</div>
+					<div class="w-full h-[470px] cursor-pointer">
+						<div class="flex flex-col h-[300px] justify-start gap-y-2">
+							<div class="flex justify-center items-center">
+							<img src="/img/services.jpg" class="w-full h-[347px] object-cover  items-center"/>
+						</div>
+							<p class="font-bold text-base">PRODUCT REGISTRATION</p>
+						</div>
+					</div>
+					<div class="w-full h-[470px] cursor-pointer">
+						<div class="flex flex-col h-[300px] justify-start gap-y-2">
+							<div class="flex justify-center items-center">
+							<img src="/img/services2.jpg" class="w-full h-[347px] object-cover  items-center"/>
+						</div>
+							<p class="font-bold text-base">SERVICE PORTAL</p>
+						</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+		</div>
+<div id="brandHover" class="bg-black bg-opacity-70 hover:flex z-40 fixed top-[136px] w-screen h-screen hidden">
+	<div class="bg-white w-full h-[470px] transition-all duration-500 px-12 py-9 justify-center">
+		<div class="grid grid-cols-3 grid-rows-1 w-full h-fit gap-x-4 ">
+			<div class="w-full h-[470px]">
+				<div class="flex flex-col h-[300px] justify-start gap-y-4 font-bold text-xs">
+					<p class="cursor-pointer hover:underline">HISTORY</p>
+					<p class="cursor-pointer hover:underline">SUSTAINABILITY</p>
+					<p class="cursor-pointer hover:underline">MADE IN EUROPE</p>
+					<p class="cursor-pointer hover:underline">CORPORATE GIFTS</p>
+					<p class="cursor-pointer hover:underline">EGIFTS CARDS</p>
+					<p class="cursor-pointer hover:underline">STORE LOCATOR</p>
+				</div>
+			</div>
+			<div class="w-full h-[470px] cursor-pointer">
+				<div class="flex flex-col h-[300px] justify-start gap-y-2">
+					<div class="flex justify-center items-center">
+					<img src="/img/brand.jpg" class="w-full h-[347px] object-cover  items-center"/>
+				</div>
+					<p class="font-bold text-base">MORE SUSTAINABLE LUGGAGE & BAGS</p>
+				</div>
+			</div>
+			<div class="w-full h-[470px] cursor-pointer">
+				<div class="flex flex-col h-[300px] justify-start gap-y-2">
+					<div class="flex justify-center items-center">
+					<img src="/img/brand2.jpg" class="w-full h-[347px] object-cover  items-center"/>
+				</div>
+					<p class="font-bold text-base">STORE LOCATION</p>
+				</div>
+			</div>
+		 </div>
+	</div>
+</div>
+</div>
+			</div>
+		</div>
+	</header>
+
+	<body class="font-sans h-screen">
+		<div id="menu2" class="bg-black bg-opacity-70 fixed z-40 w-[100%] h-screen">
+			<div
+				class="bg-white menu w-[90%] sm:w-[70%] md:w-[60%] lg:w-[45%] h-full right-0 absolute flex xl:hidden transition-all duration-500"
+			>
+				<div class="font-bold text-md flex flex-col gap-y-6 text-neutral-800 items-start text-left pt-28 w-full">
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>Luggage</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>Backpacks</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>Bags</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>Disney & Kids</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>Personalization</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>Services</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+					<div class="flex flex-row justify-between w-[70%] items-center cursor-pointer mx-14">
+						<button>The Brand</button>
+						<img src="/img/arrow.png" class="rotate-90 w-3 h-3"/>
+					</div>
+
+					<div class="grid grid-cols-1 grid-rows[auto] w-full mt-10 relative">
+						<div class=" border-t border-neutral-300 w-full">
+             <div class="flex flex-row gap-x-3 items-center font-semibold text-base mx-14 py-5 cursor-pointer">
+							<img src="/img/letter.png" class="w-[18px] h-[18px]"/>
+							<p>JOIN US</p>
+						 </div>
+						</div>
+						<div class=" border-t border-neutral-300 w-full">
+						 <div class="flex flex-row gap-x-3 items-center font-semibold text-base mx-14 py-5 cursor-pointer">
+							<img src="/img/location.png" class="w-[18px] h-[18px]"/>
+							<p>STORES</p>
+						 </div>
+						</div>
+						<div class=" border-t border-neutral-300 w-full">
+						 <div class="flex flex-row gap-x-3 items-center font-semibold text-base mx-14 py-5 cursor-pointer">
+							<img src="/img/user.png" class="w-[18px] h-[18px]"/>
+							<p>MY ACCOUNT</p>
+						 </div>
+						</div>
+						 <div class=" border-t border-neutral-300 w-full">
+						 <div class="flex flex-row gap-x-3 items-center font-semibold text-base mx-14 py-5 cursor-pointer">
+							<img src="/img/english.png" class="w-[18px] h-[18px]"/>
+							<p>UNITED KINGDOM</p>
+						 </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<article class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-auto w-[100%] h-fit bg-white font-sans">
+			<div
+				class="h-fit p-7 md:px-12 md:col-start-1 row-span-1 col-span-1 md:col-span-1 border-b-[1px] border-neutral-300 mt-[70px] md:mt-[80px] lg:mt-[140px]"
+			>
+				<p class="font-extrabold font-sans text-3xl">PROXIS</p>
+				<p class="font-medium text-neutral-900 text-lg md:text-xl">Spinner expandable (4 wheels) 55cm</p>
+				<img src="/img/review.png" class="mt-4" />
+
+				<div class=" flex-row justify-start items-baseline gap-5 mt-4 md:flex hidden">
+					<p class="font-extrabold text-2xl">£359.00</p>
+					<div class="flex flex-row gap-1 items-center">
+						<div class="bg-green-400 object-cover w-[10px] h-[10px] rounded-full"></div>
+						<p class="text-xs text-green-400 font-bold">AVAILABLE</p>
+					</div>
+					
+				</div>
+				<button class="text-neutral-600 underline md:flex hidden mt-5">Check availability for a store near you</button>
+				</div>
+			</div>
+			<div
+				class="md:col-start-1 row-span-1 col-span-2 md:col-span-1 h-[70px] p-7 border-b-[1px] border-neutral-300 flex justify-center items-center"
+			>
+				<button class="font-sans border-b-[1px] border-neutral-300">Product Details</button>
+			</div>
+			<div class="w-full  h-[800px] md:col-start-2 md:order-1 col-span-2 row-span-1 z-10 relative md:top-[-42rem] lg:top-[-42rem]">
+				<div
+					class="overflow-x-auto md:overflow-y-auto md:overflow-x-hidden justify-items-center gap-5 grid grid-row-1 grid-cols-1 md:grid-cols-2 md:auto-rows-auto h-[700px] md:h-[800px] p-2 items-center w-full"
+				>
+					<div class="bg-slate-500 p-14 w-full justify-center flex md:col-span-2">
+						<img id="image" src="/img/trolleyfront.png" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyfront2.jpg" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyback.png" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyback2.jpg" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyopen.png" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyopen2.jpg" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyside.png" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyside2.jpg" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleyside3.jpg" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleywheel.jpg" class="w-[29rem]" />
+					</div>
+					<div class="bg-slate-200 p-5 w-full justify-center flex">
+						<img id="image" src="/img/trolleytop.jpg" class="w-[29rem]" />
+					</div>
+				</div>
+				<div
+					class="overflow-x-auto overflow-y-hidden invisible md:right-0 md:top-[50%] bg-white flex flex-row md:flex-col md:w-[50px] md:h-fit h-[120px] p-4 items-center w-full"
+				>
+					<img
+						id="image2"
+						src="/img/trolleyfront.png"
+						onclick="selectImg(0)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyfront2.jpg"
+						onclick="selectImg(1)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyback.png"
+						onclick="selectImg(2)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyback2.jpg"
+						onclick="selectImg(3)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyopen.png"
+						onclick="selectImg(4)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyopen2.jpg"
+						onclick="selectImg(5)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyside.png"
+						onclick="selectImg(6)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyside2.jpg"
+						onclick="selectImg(7)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleyside3.jpg"
+						onclick="selectImg(8)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleywheel.jpg"
+						onclick="selectImg(9)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+					<img
+						id="image2"
+						src="/img/trolleytop.jpg"
+						onclick="selectImg(10)"
+						class="w-[80px] p-3 opacity-60 cursor-pointer"
+					/>
+				</div>
+			</div>
+			<div class="w-full h-auto col-span-2 md:col-span-1 md:col-start-1">
+				<div class="flex flex-col items-center border-b-[1px] border-neutral-300 px-7 py-6 md:px-12 md:row-span-1">
+					<div class="flex justify-between w-full">
+						<p class="font-bold text-sm">SIZE</p>
+						<button class="text-neutral-600 text-xs border-b-[1px] border-neutral-300">Size guide</button>
+					</div>
+					<div
+						class="grid grid-cols-4 grid-rows-2 sm:grid-rows-1 sm:grid-cols-6 md:grid-cols-4 md:grid-rows-2 gap-1 pt-3 w-full h-fit text-xs items-center"
+					>
+						<button
+							id="size"
+							onclick="selectSize(0)"
+							class="p-6 sm:p-3 col-span-2 sm:col-span-1 md:p-5 md:col-span-2 border border-neutral-400 rounded-md font-semibold w-full h-fit items-center"
+						>
+							55cm (20/23cm)
+						</button>
+						<button
+							id="size"
+							onclick="selectSize(1)"
+							class="p-6 sm:p-3 col-span-2 sm:col-span-1 md:p-5 md:col-span-2 border border-neutral-400 rounded-md font-semibold w-full h-fit items-center"
+						>
+							55cm (23/26cm)
+						</button>
+						<button
+							id="size"
+							onclick="selectSize(2)"
+							class="p-3 border border-neutral-400 rounded-md font-semibold w-full h-fit items-center"
+						>
+							69cm
+						</button>
+						<button
+							id="size"
+							onclick="selectSize(3)"
+							class="p-3 border border-neutral-400 rounded-md font-semibold w-full h-fit items-center"
+						>
+							75cm
+						</button>
+						<button
+							id="size"
+							onclick="selectSize(4)"
+							class="p-3 border border-neutral-400 rounded-md font-semibold w-full h-fit items-center"
+						>
+							81cm
+						</button>
+						<button
+							id="size"
+							onclick="selectSize(5)"
+							class="p-3 border border-neutral-400 rounded-md font-semibold w-full h-fit items-center"
+						>
+							86cm
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="w-full h-auto col-span-2 md:col-span-1 md:col-start-1">
+				<div class="flex flex-col border-b-[1px] border-neutral-300 px-7 py-6 md:px-12 justify-start md:row-span-1">
+					<div class="flex flex-row gap-3 items-baseline">
+						<p class="font-bold text-sm">COLOUR</p>
+						<p id="color" class="text-neutral-600 font-semibold text-xs"></p>
+					</div>
+					<div class="flex flex-row gap-2 pt-3 text-xs w-full items-center">
+						<button
+							id="size2"
+							onclick="selectSize2(0)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-yellow-800 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+						<button
+							id="size2"
+							onclick="selectSize2(1)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-neutral-500 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+						<button
+							id="size2"
+							onclick="selectSize2(2)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-neutral-950 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+						<button
+							id="size2"
+							onclick="selectSize2(3)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-teal-900 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+						<button
+							id="size2"
+							onclick="selectSize2(4)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-neutral-700 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+						<button
+							id="size2"
+							onclick="selectSize2(5)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-neutral-900 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+						<button
+							id="size2"
+							onclick="selectSize2(6)"
+							class="p-2 border border-neutral-400 rounded-full font-semibold w-auto h-fit justify-center items-center"
+						>
+							<div class="bg-lime-800 rounded-full object-cover w-[20px] h-[20px]"></div>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-full h-fit col-span-2 md:col-span-1 md:col-start-1">
+				<div
+					class="flex justify-between cursor-pointer md:hidden items-center border-b-[1px] border-neutral-300 p-7 md:px-12 md:row-span-1"
+				>
+					<p class="font-bold text-sm">PERSONALISE YOUR CASE</p>
+					<p class="font-extrabold text-md">&gt;</p>
+				</div>
+			</div>
+			<div class="flex w-[100%] h-fit justify-center items-center col-start-1 bg-slate-200 p-3 mt-[47px] invisible md:visible">
+			<div class="flex flex-row  bottom-0 w-[80%] col-start-1 h-[58px] font-sans md:visible">
+				<div class=" cursor-pointer w-[200px] text-teal-400 border-teal-400 hover:bg-teal-400 hover:text-white transition-all duration-300 border flex flex-col pt-2 pb-2 pl-7 pr-7 justify-center items-start">
+					<p class="font-bold  text-center text-sm ">PERSONALISE YOUR CASE</p>
+				</div>
+				<div class=" cursor-pointer w-full bg-black flex flex-col gap-2 justify-center items-center">
+					<p class="font-extrabold text-white text-sm">ADD TO CART</p>
+				</div>
+			</div>
+		</div>
+		</article>
+
+		<article class="grid grid-cols-1 auto-rows-auto lg:grid-cols-2 xl:grid-cols-3 w-full h-fit gap-y-3 font-sans relative md:top-[-40rem] top-[-8rem]">
+    <div class="flex flex-col w-full h-fit p-7 md:px-14 gap-y-2">
+     <p class="font-bold text-xl ">ABOUT THE COLLECTION</p>
+		 <p class="text-neutral-800 font-medium">Unlock a new era of high performance travelling with Proxis. The outer shells are made from Roxkin™, an exclusive multi-layered material developed by Samsonite. It bounces back into shape, offering remarkable strength, resilience and lightness. The sophisticated design resonates confidence and is fully equipped to meet all your travel needs. On top of that, choosing Proxis equals enjoying first-class assistance and benefits during and after the warranty period with our new Samsonite wecare program.</p>
+		 <p class="text-neutral-800 font-medium">Please note that Proxis, Major-Lite and all aluminium suitcases, as well as selected limited editions are excluded from most discounts or discount codes</p>
+		</div>
+		<img src="/img/samCare.png" class="cursor-pointer px-7 md:px-14 lg:col-start-1"/>
+		<div class="grid grid-cols-1 grid-rows-[auto] w-full h-fit font-bold text-base p-7 md:px-14 lg:col-start-2 lg:row-span-2 xl:col-span-2 xl:col-start-2 lg:absolute lg:top-[0rem]">
+    	<div class="flex flex-row justify-between w-full items-center border-b py-4 cursor-pointer border-neutral-300">
+				<p>PRODUCT VIDEO(S)</p>
+				<img src="/img/arrow.png" class="rotate-180 w-4 h-4"/>
+			</div>
+		<div class="flex flex-row justify-between w-full items-center border-b py-4 cursor-pointer border-neutral-300">
+			<p>DETAILS</p>
+			<img src="/img/arrow.png" class="rotate-180 w-4 h-4"/>
+		</div>
+		<div class="flex flex-row justify-between w-full items-center border-b py-4 cursor-pointer border-neutral-300">
+			<p>SIZE REQUIREMENTS BY AIRLINE</p>
+			<img src="/img/arrow.png" class="rotate-180 w-4 h-4"/>
+		</div>
+		<div class="flex flex-row justify-between w-full items-center border-b py-4 cursor-pointer border-neutral-300">
+			<p>RETURN & REFUNDS</p>
+			<img src="/img/arrow.png" class="rotate-180 w-4 h-4"/>
+		</div>
+		<div class="flex flex-row justify-between w-full items-center border-b py-4 cursor-pointer border-neutral-300">
+			<p>SHIPPING OPTIONS</p>
+			<img src="/img/arrow.png" class="rotate-180 w-4 h-4"/>
+		</div>
+		</div>
+		</article>
+
+		<article class="w-full h-fit flex flex-col font-sans gap-y-3 relative top-[-7rem] md:top-[-35rem]">
+     <div class="flex flex-col w-full h-fit p-7 md:px-14 gap-y-2 bg-slate-100">
+      <p class="font-bold text-base mb-8">KEY BENEFITS</p>
+			<div class="w-[100%] h-fit overflow-x-auto">
+			<div style="scrollbar-width: thin; scrollbar-color: #000000 transparent; scrollbar-arrow-color: transparent; scroll-behavior: smooth; " class="pb-7 overflow-x-auto overflow-y-hidden grid grid-rows-1 grid-cols-12 gap-x-56 md:gap-x-80 h-fit">
+				<div class="flex flex-col gap-y-3 w-[400px] md:w-[600px] h-fit mr-10 relative col-span-2">
+       <img src="/img/keytroll.png" class="w-full h-[420px]" />
+			 <p class="font-extrabold text-2xl lg:text-4xl">IMPRESSIVELY RESILIENT, UNIMAGINABLY STRONG</p>
+			 <p class="font-medium text-neutral-800">Shells are made from Roxkin™, an innovative material that bounces back into shape easily and is highly resilient resisting shocks. It is exceptionally robust, thanks to its phenomenal layer-by-layer in-built strength.</p>
+			  </div>
+				<div class="flex flex-col gap-y-3 w-[400px] md:w-[600px]  h-fit mr-10 relative col-span-2">
+					<img src="/img/keytroll2.png" class="w-full h-[420px]" />
+					<p class="font-extrabold text-2xl lg:text-4xl">MADE IN EUROPE</p>
+					<p class="font-medium text-neutral-800">Developed by our experienced research team and made at our own production plant, Roxkin™ material is a symbol of innovation and quality.</p>
+					 </div>
+					 <div class="flex flex-col gap-y-3 w-[400px] md:w-[600px]  h-fit mr-10 relative col-span-2">
+						<img src="/img/keytroll3.png" class="w-full h-[420px]" />
+						<p class="font-extrabold text-2xl lg:text-4xl">INTEGRATED USB PORT</p>
+						<p class="font-medium text-neutral-800">Stay connected, anyplace, anytime. Your devices can easily be charged using the integrated USB port.</p>
+						<p class="font-normal text-neutral-800">This suitcase is not sold with a power bank. 
+							Be sure you comply with the airlines rules regarding the usage of Power Banks.</p>
+					</div>
+						 <div class="flex flex-col gap-y-3 w-[400px] md:w-[600px]  h-fit mr-10 relative col-span-2">
+							<img src="/img/keytroll4.png" class="w-full h-[420px]" />
+							<p class="font-extrabold text-2xl lg:text-4xl">OUTSTANDING COMFORT</p>
+							<p class="font-medium text-neutral-800">Enjoy a carefree, premium travel experience with the elongated double tube pull handle and smooth rolling double wheels, ensuring ultimate ease of use and stable manoeuvring.</p>
+							 </div>
+							 <div class="flex flex-col gap-y-3 w-[400px] md:w-[600px]  h-fit mr-10 relative col-span-2">
+								<img src="/img/keytroll5.png" class="w-full h-[420px]" />
+								<p class="font-extrabold text-2xl lg:text-4xl">PRACTICAL INTERIOR WITH EXPANDABILITY</p>
+								<p class="font-medium text-neutral-800">The two spacious compartments come with removable cross ribbons, to keep all your belongings neatly in place. The large pocket on the divider pad and hidden expandability offer extra practical storage.</p>
+								 </div>
+								 <div class="flex flex-col gap-y-3 w-[400px] md:w-[600px]  h-fit relative col-span-2">
+									<img src="/img/keytroll6.png" class="w-full h-[420px]" />
+									<p class="font-extrabold text-2xl lg:text-4xl">MAKE IT TRULY YOURS</p>
+									<p class="font-medium text-neutral-800">Add a unique touch to your Proxis suitcase and have your initials monogrammed on the integrated personalization leather tag. This service will offered for free upon purchase.</p>
+									 </div>
+			</div>
+		 </div>
+		 </div>
+		 <img src="/img/proxiscoll.png" class="w-full flex md:hidden cursor-pointer" />
+		 <img src="/img/proxiscoll2.png" class="w-full hidden md:flex cursor-pointer"/>
+		</article>
+
+		<article class="grid grid-cols-1 grid-rows-[auto] md:grid-cols-3 lg:grid-cols-3 md:grid-rows-1 w-full h-fit font-sans gap-y-5 p-7 md:px-10 lg:px-14 relative top-[-5rem] md:top-[-33rem]">
+			<div class="w-[350px] md:w-full md:px-10 lg:px-16 flex flex-col gap-y-3 justify-center items-start ">
+				<p class="font-extrabold text-xl">PROXIS</p>
+				<p>Strong as a rock, lightweight and protective as skin, stylish as you. Discover Proxis, your high-performance travel partner.</p>
+			</div>
+			<div class="w-full h-fit overflow-x-auto md:col-start-2 md:col-span-2">
+			<div style="scrollbar-width: thin; scrollbar-color: #000000 transparent; scrollbar-arrow-color: transparent; scroll-behavior: smooth; " class="w-full h-fit flex flex-row gap-x-5 pb-5 overflow-x-auto">
+				<img src="/img/styletroll.png" class="w-full h-[420px] lg:h-[600px] xl:h-[700px]" />
+				<img src="/img/styletroll2.png" class="w-full h-[420px] lg:h-[600px] xl:h-[700px]" />
+				<img src="/img/styletroll3.png"  class="w-full h-[420px] lg:h-[600px] xl:h-[700px]"/>
+				<img src="/img/styletroll4.png" class="w-full h-[420px] lg:h-[600px] xl:h-[700px]" />
+			</div>
+		</div>
+		</article>
+
+		<article class="grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 w-full h-fit relative top-[-3rem] md:top-[-30rem]">
+    <div class="flex flex-row justify-start items-center p-4 px-7 lg:px-10 lg:py-10 gap-x-5 border border-neutral-300 cursor-pointer">
+			<img src="/img/clock.png" class="w-[35px] lg:w-[40px] h-[35px] lg:h-[40px] xl:w-[60px] xl:h-[60px]"/>
+			<div class="flex flex-col gap-y-2">
+				<p class="font-bold text-lg lg:text-base">FAST FREE STANDARD DELIVERY STARTING FROM £100</p>
+				<p class="hidden lg:flex">Samsonite uses only the best courier services and guarantees the safe delivery of all your online orders</p>
+			</div>
+		</div>
+		<div class="flex flex-row justify-start items-center p-4 px-7 lg:px-10 lg:py-10 gap-x-5 border border-neutral-300 cursor-pointer">
+			<img src="/img/repeat.png" class="w-[35px] lg:w-[40px] h-[35px] lg:h-[40px] xl:w-[60px] xl:h-[60px]"/>
+			<div class="flex flex-col gap-y-2">
+				<p class="font-bold text-lg lg:text-base">RETURNS ARE FREE</p>
+				<p class="hidden lg:flex">Shopping at Samsonite is risk-free. We guarantee your satisfaction by offering free returns.</p>
+			</div>
+		</div>
+		<div class="flex flex-row justify-start items-center p-4 px-7 lg:px-10 lg:py-10 gap-x-5 border border-neutral-300 cursor-pointer">
+			<img src="/img/padlock.png" class="w-[35px] lg:w-[40px] h-[35px] lg:h-[40px] xl:w-[60px] xl:h-[60px]"/>
+			<div class="flex flex-col gap-y-2">
+				<p class="font-bold text-lg lg:text-base">SECURE PAYMENT</p>
+				<p class="hidden lg:flex">Secure Socket Layer (SSL) encryption is used for every transaction in order to ensure that your order is secure.</p>
+			</div>
+		</div>
+		 <div class="flex flex-row justify-start items-center p-4 px-7 lg:px-10 lg:py-10 gap-x-5 border border-neutral-300 cursor-pointer">
+			<img src="/img/globe.png" class="w-[35px] lg:w-[40px] h-[35px] lg:h-[40px] xl:w-[60px] xl:h-[60px]"/>
+			<div class="flex flex-col gap-y-2">
+				<p class="font-bold text-lg lg:text-base">GLOBAL COMMERCIAL WARRANTY</p>
+				<p class="hidden lg:flex">Samsonite guarantees worldwide commercial warranty services to ensure your Samsonite luggage can always stay by your side.</p>
+			</div>
+		</div>
+		</article>
+
+		<article>
+			<div class="bg-slate-100 w-full h-[200px] md:h-[300px] flex flex-col gap-y-5 md:gap-y-10 px-20 py-5 md:py-10 justify-center items-center relative md:top-[-30rem]">
+				<p class="font-extrabold text-base scale-125 md:text-3xl">JOIN OUR COMMUNITY</p>
+				<input placeholder="Enter your email" type="text" class="md:w-[400px] w-[300px] pb-3 outline-none bg-transparent border-b border-black "/>
+			 </div>
+		</article>
+
+		<footer class="w-full h-[1300px] sm:h-[900px] bg-black text-white text-sm pb-20 font-normal md:relative md:top-[-30rem] flex justify-center">
+      <div class="grid grid-cols-2 grid-rows-[auto] md:grid-cols-3 xl:grid-cols-5 justify-items-center w-full h-fit gap-y-10 gap-x-10 p-10 px-5 md:px-14">
+				<div class="flex flex-col gap-y-3 w-full justify-start  sm:order-6 ">
+					<p class="text-neutral-500 mb-3 cursor-default">NEAREST OFFCIAL SAMSONITE STORES</p>
+					<p class="underline cursor-pointer">Find a store</p>
+				 </div>
+       <div class="flex flex-col gap-y-3 w-full justify-start items-start">
+				<p class="text-neutral-500 mb-3 cursor-default">SAMSONITE</p>
+				<p class="hover:underline cursor-default">About Samsonite</p>
+				<p class="hover:underline cursor-default">Collections</p>
+				<p class="hover:underline cursor-default">eGift Cards</p>
+				<p class="hover:underline cursor-default">Corporate Gifts</p>
+				<p class="hover:underline cursor-default">Refer a friend</p>
+				<p class="hover:underline cursor-default">Cabin Luggage Finder</p>
+				<p class="hover:underline cursor-default">Vacancies</p>
+				<p class="hover:underline cursor-default">Press Contact</p>
+				<p class="hover:underline cursor-default">Catalogues 2024</p>
+				<p class="hover:underline cursor-default">Sitemap</p>
+			 </div>
+			 <div class="flex flex-col gap-y-3 w-full justify-start items-start">
+				<p class="text-neutral-500 mb-3 cursor-default">SUPPORT</p>
+				<p class="hover:underline cursor-default">My Order</p>
+				<p class="hover:underline cursor-default">Shipping & Returns</p>
+				<p class="hover:underline cursor-default">FAQ</p>
+				<p class="hover:underline cursor-default">Warranty</p>
+				<p class="hover:underline cursor-default">Store Locator</p>
+				<p class="hover:underline cursor-default">Repair Center</p>
+				<p class="hover:underline cursor-default">Contact Us</p>
+			 </div>
+			 <div class="flex flex-col gap-y-3 w-full justify-start items-start">
+				<p class="text-neutral-500 mb-3 cursor-default">LEGAL</p>
+				<p class="hover:underline cursor-default">Terms of Use and Sale</p>
+				<p class="hover:underline cursor-default">Privacy Policy</p>
+				<p class="hover:underline cursor-default">Cookies Policy</p>
+				<p class="hover:underline cursor-default">Cookies Settings</p>
+				<p class="cursor-pointer hover:underline">Modern Slavery Transparency Statement</p>
+				<p class="hover:underline cursor-default">Fake WebSites</p>
+			 </div>
+			 <div class="flex flex-col gap-y-3 w-full justify-start">
+				<p class="text-neutral-500 mb-3 cursor-default">PAYMENTS METHODS</p>
+				<img src="/img/payments.png" class="w-[230px] h-fit"/>
+			 </div>
+			 <div class="flex flex-col gap-y-3 w-full justify-start order-6 col-span-2 sm:col-span-1 xl:order-1">
+				<p class="text-neutral-500 mb-3 cursor-default">JOIN US ON</p>
+				<img src="/img/socials2.png" class="w-[500px] h-fit flex sm:hidden"/>
+				<img src="/img/socials.png" class="w-[200px] h-fit hidden sm:flex"/>
+			 </div>
+			 <div class="flex flex-col gap-y-3 w-full justify-start order-6 col-span-2 sm:col-span-3 xl:col-span-5 border-t border-neutral-800">
+				<p class="text-neutral-500 mb-3 cursor-default pt-5">OUR PARTNERS</p>
+				<div class="w-full flex justify-center">
+				<img src="/img/partners2.png" class="w-[430px] h-fit flex sm:hidden"/>
+				<img src="/img/partners.png" class="w-[600px] md:w-[800px] xl:w-[1000px] h-fit hidden sm:flex"/>
+			</div>
+			 </div>
+			</div>
+			
+		</footer>
+
+		<div class="w-full h-fit relative top-[-8rem] md:top-[-30rem] text-sm text-white flex justify-center items-center p-10 px-5 sm:px-14 bg-neutral-800">
+			<p>Copyright © 2024 Samsonite. All rights reserved. Visit our corporate site for more information. Samsonite and the Samsonite logo are registered trademarks of Samsonite IP Holdings S.àr.l.</p>
+		</div>
+	
+
+		<div class="flex flex-row fixed z-30 bottom-0 w-full h-[58px] font-sans md:hidden text-white">
+			<div class="w-[200px] bg-custom-57838e flex flex-col pt-2 pb-2 pl-7 pr-7 justify-center items-start">
+				<p class="font-extrabold text-sm">£359.00</p>
+				<div class="flex flex-row gap-2 items-center">
+					<div class="bg-green-400 object-cover w-[10px] h-[10px] border border-white rounded-full"></div>
+					<p class="text-xs font-semibold">AVAILABLE</p>
+				</div>
+			</div>
+			<div class="w-full bg-black flex flex-col gap-2 justify-center items-center">
+				<p class="font-extrabold text-white text-sm">ADD TO CART</p>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script src="./logic.js"></script>
